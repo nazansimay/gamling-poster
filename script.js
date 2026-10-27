@@ -1,7 +1,7 @@
 'use strict';
 
 const weekly = document.querySelector('#weekly');
-const money = new Intl.NumberFormat('en-IE', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
+const money = new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP', maximumFractionDigits: 0 });
 function updateSavings() {
   const amount = Number(weekly.value);
   document.querySelector('#weekly-value').value = money.format(amount);
