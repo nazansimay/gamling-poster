@@ -17,31 +17,39 @@
   <nav aria-label="Main navigation"><a href="#why">The reality check</a><a href="#alternatives">Make a different choice <span aria-hidden="true">↗</span></a></nav>
 </header>
 <main id="main">
-  <section class="hero" aria-labelledby="hero-title">
+  <section class="hero wheel-hero" aria-labelledby="hero-title">
     <div class="hero-copy">
-      <p class="eyebrow"><span class="status-dot"></span> YOU SCANNED. HERE’S THE REALITY.</p>
-      <h1 id="hero-title">YOU EXPECTED<br>TO <span class="outline">WIN.</span><br>BUT YOU GOT<br><span class="highlight">NOTHING.</span></h1>
-      <p class="hero-intro">Not quite the holiday you had in mind?</p>
-      <p class="hero-description">You took a chance, hoping for a reward. But there was no guarantee you would get one.</p>
-      <a class="button yellow" href="#why">Sound familiar? <span aria-hidden="true">↓</span></a>
+      <p class="eyebrow" id="hero-eyebrow"><span class="status-dot"></span> ONE SPIN. ONE DREAM HOLIDAY.</p>
+      <h1 id="hero-title" tabindex="-1">FEELING<br><span class="highlight">LUCKY?</span></h1>
+      <p class="hero-intro" id="hero-intro">You scanned. Now take a spin.</p>
+      <p class="hero-description" id="hero-description">The holiday caught your eye. The possibility brought you here. What will the wheel say?</p>
+      <a class="button yellow" id="reveal-link" href="#why" hidden>Take back control <span aria-hidden="true">↓</span></a>
+      <noscript><p>This wheel was designed to lose. No real prize is available. Read the reality check below.</p></noscript>
     </div>
-    <div class="ticket-scene">
-      <span class="handwritten">That “what if I win?” feeling.</span>
-      <article class="ticket" aria-label="Your holiday ticket: no prize">
-        <div class="ticket-top"><span>ONE SCAN. ONE BIG DREAM.</span><span aria-hidden="true">✳</span></div>
-        <div class="holiday-art" aria-hidden="true"><div class="sun"></div><div class="sea"></div><div class="island"></div><div class="palm trunk"></div><div class="palm leaf l1"></div><div class="palm leaf l2"></div><div class="palm leaf l3"></div><div class="palm leaf l4"></div><span class="plane">✈</span></div>
-        <div class="ticket-dream">DREAM<br>HOLIDAY.</div>
-        <div class="ticket-result"><span>YOUR GUARANTEED WIN</span><strong>NOTHING.</strong><small>No holiday. No prize. Just a moment to rethink.</small></div>
-        <div class="ticket-bottom"><span>DESTINATION<br><b>REALITY CHECK</b></span><span class="barcode" aria-hidden="true"></span></div>
-      </article>
-      <span class="round-note">THE ONLY<br>GUARANTEE?<br><strong>NO GUARANTEE.</strong></span>
-      <p class="campaign-note">This is an awareness campaign, not a prize draw.</p>
+    <div class="wheel-stage">
+      <div class="wheel-frame" aria-hidden="true">
+        <span class="wheel-pointer"></span>
+        <div class="wheel-disc" id="wheel-disc">
+          <span class="wheel-label" style="--angle:30deg">WIN</span>
+          <span class="wheel-label" style="--angle:90deg">LOSE</span>
+          <span class="wheel-label" style="--angle:150deg">WIN</span>
+          <span class="wheel-label" style="--angle:210deg">LOSE</span>
+          <span class="wheel-label" style="--angle:270deg">WIN</span>
+          <span class="wheel-label" style="--angle:330deg">LOSE</span>
+        </div>
+        <span class="wheel-hub">↗</span>
+      </div>
+      <p class="wheel-status" id="wheel-status" role="status" aria-atomic="true">WIN OR LOSE?</p>
+      <button class="button yellow spin-button" id="spin-button" disabled>Spin the wheel <span aria-hidden="true">↻</span></button>
+      <button class="skip-spin" id="skip-spin" hidden>Skip to the message ↓</button>
+      <p class="campaign-note">An interactive awareness experience. No money or real prizes.</p>
     </div>
-    <div class="hero-bottom"><span>A LITTLE DISAPPOINTMENT. A BIGGER CONVERSATION.</span><a href="#why" aria-label="Read the reality check">↓</a></div>
+    <div class="hero-bottom" id="hero-bottom" hidden><span>THE SPIN IS OVER. YOUR CHOICES AREN’T.</span><a href="#why" aria-label="Read the reality check">↓</a></div>
   </section>
+  <div id="campaign-content">
   <section class="reality section-wrap" id="why" aria-labelledby="why-title">
     <p class="eyebrow blue-text">THE REALITY CHECK</p>
-    <div class="reality-grid"><h2 id="why-title">IT WAS NEVER<br>ABOUT THE<br><span class="blue-text">HOLIDAY.</span></h2><div class="reality-copy"><p class="lead">It was about the possibility.</p><p>For a second, you pictured it. The sun. The escape. The feeling of winning something for nothing.</p><p>This is the psychology behind gambling. The excitement of a possible win can make you forget the very real possibility of losing.</p><div class="truth"><span aria-hidden="true">↗</span><p>Every bet puts your money at risk.<br><strong>Your next win is never guaranteed.</strong></p></div></div></div>
+    <div class="reality-grid"><h2 id="why-title">THE WHEEL<br>WAS <span class="blue-text">RIGGED.</span><br>WAS THE HOPE?</h2><div class="reality-copy"><p class="lead">The result was set. Your anticipation was real.</p><p>We deliberately programmed this wheel to land on LOSE every time. There was never a holiday to win. This is a campaign demonstration, not a real prize draw.</p><p>But that moment of “what if I win?” is the point. The possibility of a reward can pull your attention away from the possibility of losing.</p><p>This wheel’s fixed result doesn’t mean every bet is fixed. The connection is the expectation: wanting a win doesn’t guarantee one. With a real bet, your money is at risk.</p><div class="truth"><span aria-hidden="true">↗</span><p>You couldn’t change this wheel’s outcome.<br><strong>You can choose what happens to your money.</strong></p></div></div></div>
   </section>
   <section class="money section-wrap" id="your-money" aria-labelledby="money-title">
     <div class="money-copy"><p class="eyebrow">CHANGE THE PLAN</p><h2 id="money-title">DON’T LEAVE<br>YOUR MONEY<br>TO <span class="underlined">CHANCE.</span></h2><p>You can’t guarantee a win, but you can choose what happens to your money.</p><p>Instead of betting on chance, invest in yourself. Save your money. Spend it on something you actually want.</p></div>
@@ -57,6 +65,7 @@
     </div><p class="campus-note">Looking for activities on campus? Check your student union’s events calendar for free sessions and society tasters.</p>
   </section>
   <section class="closing"><p class="eyebrow">NO JACKPOT REQUIRED.</p><h2>BET ON<br><span>YOURSELF.</span></h2><p>Your time. Your plans. Your money.<br>That’s something worth keeping.</p><a class="button yellow" href="#alternatives">Find your next move <span aria-hidden="true">↗</span></a></section>
+  </div>
 </main>
 <footer><a class="brand" href="#"><span class="brand-icon" aria-hidden="true">↗</span><span>DON’T LEAVE IT<br>TO CHANCE.</span></a><p>A gambling awareness campaign.<br>No prizes. No bets. A different perspective.</p><a href="#main">Back to top ↑</a></footer>
 <dialog id="idea-dialog" aria-labelledby="dialog-title"><button class="close-dialog" aria-label="Close activity plan">×</button><p class="eyebrow blue-text">YOUR NEXT MOVE</p><h2 id="dialog-title"></h2><p id="dialog-intro"></p><ol id="dialog-steps"></ol><button class="button blue-button" id="download-plan">Save this plan <span aria-hidden="true">↓</span></button><p class="save-status" role="status"></p></dialog>

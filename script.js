@@ -1,5 +1,71 @@
 'use strict';
 
+const spinButton = document.querySelector('#spin-button');
+const skipSpin = document.querySelector('#skip-spin');
+const wheel = document.querySelector('#wheel-disc');
+const wheelStatus = document.querySelector('#wheel-status');
+const campaignContent = document.querySelector('#campaign-content');
+const navigation = document.querySelector('.header nav');
+const footer = document.querySelector('footer');
+let spinState = 'ready';
+let spinTimeout;
+
+campaignContent.hidden = true;
+navigation.hidden = true;
+footer.hidden = true;
+spinButton.disabled = false;
+skipSpin.hidden = false;
+
+function revealCampaign(skipped = false) {
+  if (spinState === 'revealed') return;
+  spinState = 'revealed';
+  clearTimeout(spinTimeout);
+  wheelStatus.textContent = skipped ? 'THE OUTCOME WAS ALWAYS LOSE.' : 'YOU LOSE.';
+  document.querySelector('#hero-eyebrow').textContent = 'NO HOLIDAY. NO PRIZE. A REALITY CHECK.';
+  const title = document.querySelector('#hero-title');
+  title.innerHTML = 'IT WAS<br><span class="highlight">RIGGED.</span>';
+  document.querySelector('#hero-intro').textContent = 'Did you think you could win?';
+  document.querySelector('#hero-description').textContent = 'This wheel was set to lose from the start. But that hope of winning? That was real. You can’t change this result. You can choose what happens to your money.';
+  document.querySelector('#reveal-link').hidden = false;
+  document.querySelector('#hero-bottom').hidden = false;
+  campaignContent.hidden = false;
+  navigation.hidden = false;
+  footer.hidden = false;
+  spinButton.hidden = true;
+  skipSpin.hidden = true;
+  document.querySelector('.wheel-hero').classList.add('is-revealed');
+  title.focus({ preventScroll: true });
+}
+
+spinButton.addEventListener('click', () => {
+  if (spinState !== 'ready') return;
+  spinState = 'spinning';
+  spinButton.disabled = true;
+  skipSpin.hidden = true;
+  spinButton.textContent = 'Spinning…';
+  wheelStatus.textContent = 'THE WHEEL IS TURNING…';
+  // Six 60-degree sectors start at 12 o’clock. 330° is the centre
+  // of a LOSE sector; +30° places it directly under the fixed pointer.
+  const finalRotation = 360 * 5 + 30;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  wheel.style.transition = reducedMotion ? 'none' : 'transform 4.6s cubic-bezier(.12,.75,.12,1)';
+  wheel.style.transform = `rotate(${finalRotation}deg)`;
+  if (reducedMotion) {
+    revealCampaign();
+  } else {
+    wheel.addEventListener('transitionend', event => {
+      if (event.propertyName === 'transform') revealCampaign();
+    });
+    // Covers interrupted transitions or a tab returning from the background.
+    spinTimeout = setTimeout(() => revealCampaign(), 4800);
+  }
+});
+skipSpin.addEventListener('click', () => {
+  wheel.style.transition = 'none';
+  wheel.style.transform = 'rotate(30deg)';
+  revealCampaign(true);
+});
+
 const weekly = document.querySelector('#weekly');
 const money = new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP', maximumFractionDigits: 0 });
 function updateSavings() {
