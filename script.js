@@ -21,7 +21,7 @@ function revealCampaign(skipped = false) {
   spinState = 'revealed';
   clearTimeout(spinTimeout);
   wheelStatus.textContent = skipped ? 'THE OUTCOME WAS ALWAYS LOSE.' : 'YOU LOSE.';
-  document.querySelector('#hero-eyebrow').textContent = 'NO HOLIDAY. NO PRIZE. A REALITY CHECK.';
+  document.querySelector('#hero-eyebrow').textContent = 'NO MATCH TICKET. NO PRIZE. A REALITY CHECK.';
   const title = document.querySelector('#hero-title');
   title.innerHTML = 'IT WAS<br><span class="highlight">RIGGED.</span>';
   document.querySelector('#hero-intro').textContent = 'Did you think you could win?';
